@@ -29,9 +29,10 @@
 
     struct Velocities  
     {  
-        long robot_id;  
-        double linear_velocity_x;  
-        double linear_velocity_y;  
-        double angular_velocity_z;  
+        >long robot_id;  
+        >double linear_velocity_x;  
+        >double linear_velocity_y;  
+        >double angular_velocity_z;  
+        
     };  
 
