@@ -27,11 +27,11 @@
 
 3. Published Data Structure:
 
-    struct Velocities
-    {
-        long robot_id;
-        double linear_velocity_x;
-        double linear_velocity_y;
-        double angular_velocity_z;
-    };
+    struct Velocities  
+    {  
+        long robot_id;  
+        double linear_velocity_x;  
+        double linear_velocity_y;  
+        double angular_velocity_z;  
+    };  
 
