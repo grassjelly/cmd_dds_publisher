@@ -23,7 +23,7 @@
 ### Notes:
 1. DDS Domain ID: 0
 
-2. DDS Topic Name: "DemoVelocities"
+2. DDS Topic Name: "CommandVelocities"
 
 3. Published Data Structure:
 
