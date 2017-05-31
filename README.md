@@ -1,23 +1,28 @@
 ### Running the demo
-1. Run the demo launch file.
+1. Install twist_mux for multiplexing
+
+    ```sh
+    $ sudo apt-get install ros-indigo-twist-mux
+    ```
+2. Run the demo launch file.
 
     ```sh
     $ roslaunch cmd_dds_publisher demo.launch 
     ```
-2. Drive the robot from the same terminal.
+3. Drive the robot from the same terminal.
 
-3. Open a new terminal and echo "cmd_vel" topic to see the received ROS msgs.
+4. Open a new terminal and echo "cmd_vel" topic to see the received ROS msgs.
 
     ```sh
     $ rostopic echo cmd_vel
     ```
-4. Run fake DDS 'cmd_vel' overwrite (optional).
+5. Run fake DDS 'cmd_vel' overwrite (optional).
 
     ```sh
     $ rosrun cmd_dds_publisher Velocities_publisher
     ```
 
-5. Check the received messages in No.3 . User input should be disabled when Velocities_publisher is run (No.4) since DDS control has more priority than ROS control.
+6. Check the received messages in No.3 . User input should be disabled when Velocities_publisher is run (No.4) since DDS control has more priority than ROS control.
 
 
 ### Notes:
