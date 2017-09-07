@@ -7,6 +7,7 @@
 
   <node pkg="twist_mux" type="twist_mux" name="twist_mux" output="screen">
     <rosparam file="$(arg config_topics)" command="load"/>
+    <remap from="cmd_vel_out" to="cmd_vel"/>
   </node>
 
   <node pkg="cmd_dds_publisher" type="Velocities_subscriber" name="Velocities_subscriber" output="screen"/>

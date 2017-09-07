@@ -14,7 +14,7 @@ find_package(RTI REQUIRED)
 
 catkin_package(
   INCLUDE_DIRS include src
-  LIBRARIES dds_lib
+  LIBRARIES dds_lib2
   DEPENDS nddsc nddscpp nddscore 
 )
 
@@ -29,19 +29,27 @@ include_directories(
 )
 
 add_definitions(-DRTI_UNIX)
+	link_directories(${NDDSHOME}/lib/armv6vfphLinux3.xgcc4.7.2)
+if(${CMAKE_SYSTEM_PROCESSOR} MATCHES "x86_64")
+  link_directories(${NDDSHOME}/lib/x64Linux3gcc4.8.2)
+elseif(${CMAKE_SYSTEM_PROCESSOR} MATCHES "armv7l")
+  link_directories(${NDDSHOME}/lib/armv6vfphLinux3.xgcc4.7.2)
+elseif(${CMAKE_SYSTEM_PROCESSOR} MATCHES "aarch64")
+  link_directories(${NDDSHOME}/lib/armv6vfphLinux3.xgcc4.7.2)
+endif()
 
 link_directories(
   ${NDDSHOME}/lib/x64Linux3gcc4.8.2
   ${NDDSHOME}/lib/armv6vfphLinux3.xgcc4.7.2
 )
 
-add_library(dds_lib
+add_library(dds_lib2
   src/Velocities.cxx
   src/VelocitiesPlugin.cxx
   src/VelocitiesSupport.cxx
 )
 
-target_link_libraries(dds_lib
+target_link_libraries(dds_lib2
   nddsc
   nddscpp
   nddscore
@@ -54,24 +62,9 @@ add_executable(Velocities_publisher
 
 target_link_libraries(Velocities_publisher
   ${catkin_LIBRARIES}
-  dds_lib
+  dds_lib2
 )
 
-add_executable(odomtest_sub
-  src/odomtest_sub.cpp
-)
-
-target_link_libraries(odomtest_sub
-  ${catkin_LIBRARIES}
-)
-
-add_executable(odomtest_pub
-  src/odomtest_pub.cpp
-)
-
-target_link_libraries(odomtest_pub
-  ${catkin_LIBRARIES}
-)
 
 add_executable(Velocities_subscriber
   src/Velocities_subscriber.cxx
@@ -79,5 +72,5 @@ add_executable(Velocities_subscriber
 
 target_link_libraries(Velocities_subscriber
   ${catkin_LIBRARIES}
-  dds_lib
+  dds_lib2
 )
